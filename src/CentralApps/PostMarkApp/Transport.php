@@ -63,17 +63,45 @@ class Transport implements Transport {
 		
 	}
 	
-	
-	
-	
-	
 	public function send(Message $message)
 	{
 		$this->prepare();
+		$email = $message->generateSendableArray();
 		if(empty($this->errors)) {
 			// do something
+			$this->sendViaPostmarkApp($email);
 		} else {
 			// throw something
+		}
+	}
+	
+	protected function sendViaPostmarkApp($sendableEmail)
+	{
+		
+		$email = json_encode( $sendableEmail );
+		
+		$headers = array(
+			'Accept: application/json',
+			'Content-Type: application/json',
+			'X-Postmark-Server-Token: ' . $this->apiKey
+		);
+		
+		$ch = curl_init();
+		curl_setopt($ch, \CURLOPT_URL, $this->apiEndPoint );
+		curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, \CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, \CURLOPT_POSTFIELDS, $email);
+		curl_setopt($ch, \CURLOPT_HTTPHEADER, $headers);
+		$response = curl_exec($ch);
+		$error = curl_error($ch);
+		$cleaned_response = json_decode( $response );
+		if( curl_getinfo($ch, \CURLINFO_HTTP_CODE) == 200 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 	
