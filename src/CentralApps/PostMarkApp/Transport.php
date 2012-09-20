@@ -7,7 +7,7 @@ use \CentralApps\Mail\Message,
 class Transport implements Transport {
 	
 	protected $apiKey;
-	protected $apiEndPoint;
+	protected $apiEndPoint = 'http://api.postmarkapp.com/email';
 	protected $permittedAttachmentTypes = array();
 	protected $maxAttachmentSize;
 	protected $maxNumAttachments = 0;
