@@ -50,7 +50,7 @@ abstract class Message {
 		return $this->sender;
 	}
 	
-	public function setReplyTo(SenderReceiver $replyTo)
+	public function setReplyTo(ReplyTo $replyTo)
 	{
 		$this->replyTo = $replyTo;
 	}
