@@ -16,7 +16,7 @@ abstract class SenderReceiver {
 		if( filter_var($email, \FILTER_VALIDATE_EMAIL) !== false ) {
 			$this->email = $email;
 		} else {
-			throw new \Exception("Email address " . $email . " not valid");
+			throw new Exceptions\InvalidEmailAddressException("Email address " . $email . " not valid");
 		}
 	}
 	
