@@ -31,6 +31,16 @@ class Message extends \CentralApps\Mail\Message {
 			$sendable['HtmlBody'] = $this->htmlMessage;
 		}
 		
+		$sendable['To'] = implode(', ', $this->to->flattern() );
+		
+		if(count($this->bcc) > 0 ) {
+			$sendable['Bcc'] = implode(', ' , $this->bcc->flattern() );
+		}
+		
+		if(count($this->cc) > 0 ) {
+			$sendable['Cc'] = implode(', ', $this->cc->flattern() );
+		}
+
 		
 		return $sendable;
 		
