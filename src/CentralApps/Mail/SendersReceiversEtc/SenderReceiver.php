@@ -4,7 +4,17 @@ namespace CentralApps\Mail\SendersReceiversEtc;
 abstract class SenderReceiver {
 	
 	protected $name=null;
-	protected $email;
+	protected $email=null;
+	
+	public function __construct($email=null, $name=null)
+	{
+		if(!is_null($name)) {
+			$this->setName($name);
+		}
+		if(!is_null($email)) {
+			$this->setEmail($email);
+		}
+	}
 	
 	public function setName($name=null)
 	{
@@ -22,6 +32,9 @@ abstract class SenderReceiver {
 	
 	public function __toString()
 	{
+		if( is_null($this->email)) {
+			throw new Exceptions\InvalidEmailAddressException("Email address not defined");
+		}
 		if(!is_null($this->name)) {
 			return $this->name . " <" . $this->email . ">";
 		} else {
