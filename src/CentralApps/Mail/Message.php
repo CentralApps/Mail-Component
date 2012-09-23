@@ -40,6 +40,11 @@ abstract class Message {
 		}
 	}
 	
+	public function getAttachments()
+	{
+		return $this->attachments;
+	}
+	
 	public function setSender(SendersReceiversEtc\Sender $sender)
 	{
 		$this->sender = $sender;
