@@ -40,7 +40,7 @@ abstract class Message {
 		}
 	}
 	
-	public function setSender(Sender $sender)
+	public function setSender(SendersReceiversEtc\Sender $sender)
 	{
 		$this->sender = $sender;
 	}
@@ -50,7 +50,7 @@ abstract class Message {
 		return $this->sender;
 	}
 	
-	public function setReplyTo(ReplyTo $replyTo)
+	public function setReplyTo(SendersReceiversEtc\ReplyTo $replyTo)
 	{
 		$this->replyTo = $replyTo;
 	}
@@ -75,7 +75,7 @@ abstract class Message {
 		$this->htmlMessage = $message;
 	}
 	
-	public function addRecipient(Recipient $recipient, $type='to')
+	public function addRecipient(SendersReceiversEtc\Recipient $recipient, $type='to')
 	{
 		$type = ( in_array($type, $this->recipientTypes) ) ? $type : 'to';
 		$this->$type->add($recipient);
