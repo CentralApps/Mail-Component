@@ -21,11 +21,11 @@ abstract class Message {
 	
 	public function __construct()
 	{
-		$recipientsCollection = new RecipientsCollection();
+		$recipientsCollection = new SendersReceiversEtc\RecipientsCollection();
 		$this->to = clone $recipientsCollection;
 		$this->cc = clone $recipientsCollection;
 		$this->bcc = clone $recipientsCollection;
-		$this->headers = new HeadersCollection();
+		$this->headers = new Headers\HeadersCollection();
 		$this->attachments = new Collection();
 	}
 	
