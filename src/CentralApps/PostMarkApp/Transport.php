@@ -26,7 +26,7 @@ class Transport implements Transport {
 		}
 	}
 	
-	public function interimAttachmentCheck($attachment)
+	public function interimAttachmentCheck(\splFileInfo $attachment)
 	{
 		
 	}
