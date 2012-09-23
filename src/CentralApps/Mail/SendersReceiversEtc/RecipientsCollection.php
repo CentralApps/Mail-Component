@@ -14,7 +14,7 @@ class RecipientsCollection extends Collection {
 	
 	public function add($recipient)
 	{
-		if(get_class($recipient) !== 'Recipient') {
+		if(get_class($recipient) !== 'CentralApps\Mail\SendersReceiversEtc\Recipient') {
 			throw new \InvalidArgumentException("Argument must be instance of the Recipient class");
 		}
 		if( ! $this->uniqueEmailsOnly ) {
