@@ -3,7 +3,7 @@ namespace CentralApps\Mail;
 
 class Collection implements \Countable, \IteratorAggregate {
 	
-	private $objects = array();
+	protected $objects = array();
 	
 	public function add($object)
 	{
@@ -18,5 +18,14 @@ class Collection implements \Countable, \IteratorAggregate {
 	public function getIterator()
 	{
 		return new \ArrayIterator($this->objects);
+	}
+	
+	public function flattern()
+	{
+		$tor = array();
+		foreach($this->objects as $object) {
+			$tor[] = (string) $object;
+		}
+		return $tor;
 	}
 }
