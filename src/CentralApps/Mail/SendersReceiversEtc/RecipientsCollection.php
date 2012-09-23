@@ -12,8 +12,11 @@ class RecipientsCollection extends Collection {
 		$this->uniqueEmailsOnly = $uniqueEmailsOnly;
 	}
 	
-	public function add(Recipient $recipient)
+	public function add($recipient)
 	{
+		if(get_class($recipient) !== 'Recipient') {
+			throw new \InvalidArgumentException("Argument must be instance of the Recipient class");
+		}
 		if( ! $this->uniqueEmailsOnly ) {
 			$this->objects[] = $recipient;
 		} else {

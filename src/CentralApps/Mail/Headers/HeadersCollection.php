@@ -5,8 +5,11 @@ use \CentralApps\Mail\Collection;
 
 class HeadersCollection extends Collection {
 	
-	public function add(Header $header)
+	public function add($header)
 	{
+		if(get_class($header) !== 'Header') {
+			throw new \InvalidArgumentException("Argument must be instance of the Header class");
+		}
 		$this->objects[] = $header;
 	}
 	
