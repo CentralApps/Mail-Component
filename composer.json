@@ -1,5 +1,5 @@
 {
-    "name": "centralapps/mail",
+    "name": "centralapps/mail-core",
     "type": "library",
     "description": "Abstract mail component for external APIs and Services, including PostmarkApp and Mail Gun",
     "keywords": ["mail","email", "postmarkapp", "mailgun"],
