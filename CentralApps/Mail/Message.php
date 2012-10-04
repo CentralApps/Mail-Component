@@ -5,6 +5,8 @@ abstract class Message {
 	
 	protected $sender;
 	
+	protected $recipientOverride = false;
+	
 	protected $to;
 	protected $cc;
 	protected $bcc;
@@ -27,6 +29,12 @@ abstract class Message {
 		$this->bcc = clone $recipientsCollection;
 		$this->headers = new Headers\HeadersCollection();
 		$this->attachments = new Collection();
+	}
+	
+	public function recipientOverride($recipient)
+	{
+		$this->recipientOverride = $recipient;
+		$this->to->add($recipient);
 	}
 	
 	public function addAttachment($filePath)
@@ -82,8 +90,10 @@ abstract class Message {
 	
 	public function addRecipient(SendersReceiversEtc\Recipient $recipient, $type='to')
 	{
-		$type = ( in_array($type, $this->recipientTypes) ) ? $type : 'to';
-		$this->$type->add($recipient);
+		if(is_null($this->recipientOverride)) {
+			$type = ( in_array($type, $this->recipientTypes) ) ? $type : 'to';
+			$this->$type->add($recipient);
+		}
 	}
 	
 	public function getAllRecipients()
