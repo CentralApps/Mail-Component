@@ -5,7 +5,7 @@ abstract class Message {
 	
 	protected $sender;
 	
-	protected $recipientOverride = false;
+	protected $recipientOverride = null;
 	
 	protected $to;
 	protected $cc;
