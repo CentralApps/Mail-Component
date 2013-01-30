@@ -21,6 +21,11 @@ abstract class SenderReceiver {
 		$this->name = $name;
 	}
 	
+	public function getName()
+	{
+		return $this->name;
+	}
+	
 	public function setEmail($email)
 	{
 		if( filter_var($email, \FILTER_VALIDATE_EMAIL) !== false ) {
@@ -28,6 +33,11 @@ abstract class SenderReceiver {
 		} else {
 			throw new Exceptions\InvalidEmailAddressException("Email address " . $email . " not valid");
 		}
+	}
+	
+	public function getEmail()
+	{
+		return $this->email;
 	}
 	
 	public function __toString()
