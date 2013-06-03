@@ -41,7 +41,7 @@ abstract class Message {
 	{
 		$file = new \SplFileInfo($filePath);
 		if( $file->isFile() && $file->isReadable() ) {
-			$this->attachments[] = $file;
+			$this->attachments->add($file);
 			return $file;
 		} else {
 			// throw new exception
