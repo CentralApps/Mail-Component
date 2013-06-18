@@ -31,7 +31,7 @@ abstract class SenderReceiver {
 		if( filter_var($email, \FILTER_VALIDATE_EMAIL) !== false ) {
 			$this->email = $email;
 		} else {
-			throw new Exceptions\InvalidEmailAddressException("Email address " . $email . " not valid");
+			throw new \CentralApps\Mail\Exceptions\InvalidEmailAddressException("Email address " . $email . " not valid");
 		}
 	}
 	
@@ -43,7 +43,7 @@ abstract class SenderReceiver {
 	public function __toString()
 	{
 		if( is_null($this->email)) {
-			throw new Exceptions\InvalidEmailAddressException("Email address not defined");
+			throw new \CentralApps\Mail\Exceptions\InvalidEmailAddressException("Email address not defined");
 		}
 		if(!is_null($this->name)) {
 			return $this->name . " <" . $this->email . ">";
