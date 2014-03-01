@@ -1,8 +1,7 @@
 <?php
 namespace CentralApps\Mail;
 
-class Configuration extends \ArrayObject {
-	
-	
-	
+class Configuration extends \ArrayObject
+{
+
 }
