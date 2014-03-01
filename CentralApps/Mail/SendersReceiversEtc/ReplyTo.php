@@ -1,6 +1,7 @@
 <?php
 namespace CentralApps\Mail\SendersReceiversEtc;
 
-class ReplyTo extends SenderReceiver {
-	
+class ReplyTo extends SenderReceiver
+{
+
 }

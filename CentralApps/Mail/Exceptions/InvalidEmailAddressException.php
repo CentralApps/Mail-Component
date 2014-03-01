@@ -1,6 +1,7 @@
 <?php
 namespace CentralApps\Mail\Exceptions;
 
-class InvalidEmailAddressException extends \Exception {
-	
+class InvalidEmailAddressException extends \Exception
+{
+
 }
